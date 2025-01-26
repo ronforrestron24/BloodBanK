@@ -8,7 +8,7 @@ export class BloodService {
   constructor(@InjectModel(Blood.name) private bloodModel: Model<BloodDocument>) {
     constructor(@InjectModel(Blood.id)private bloodModel: Model<BloodDocument>) {
 
-      async findAll(): Promise<Blood[]> {
+      async find(): Promise<Blood[]> {
         return this.bloodModel.find().exec();
       }
     }
