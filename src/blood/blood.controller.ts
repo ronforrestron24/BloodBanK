@@ -1,5 +1,6 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { BloodService } from './blood.service';
+import { Blood } from './models/blood.model';
 
 @Controller('blood')
 export class BloodController {
@@ -7,6 +8,6 @@ export class BloodController {
 
   @Get()
   async findAll(): Promise<Blood[]> {
-    return this.bloodService.find();
+    return this.bloodService.findAll();
   }
 }
