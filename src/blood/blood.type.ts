@@ -1,3 +1,4 @@
+//type is graphql specific
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()

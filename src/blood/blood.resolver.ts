@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BloodType } from './blood.type';
 
 @Resolver((of) => BloodType)
@@ -14,4 +14,7 @@ export class BloodResolver {
       bloodType: 'A',
     };
   }
+
+  @Mutation((returns) => BloodType)
+  createBlood() {}
 }
