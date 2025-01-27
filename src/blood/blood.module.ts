@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { BloodResolver } from './blood.resolver';
 
-@Module({})
+@Module({
+  providers: [BloodResolver],
+})
 export class BloodModule {}
