@@ -1,19 +1,26 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { BloodModule } from './blood/blood.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Blood } from './blood/blood.entity';
+import { join } from 'path';
+import { BloodType } from './blood/blood.entity'; // Adjust path as needed
+import { BloodModule } from './blood/blood.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      url: 'mongodb://localhost/blood',
-      synchronize: true,
-      useUnifiedTopology: true,
-      entities: [Blood],
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true, // Auto-generates schema
     }),
+
+    // TypeORM Module Configuration for MongoDB
+    MongooseModule.forRoot('mongodb://localhost:27017', {
+      dbName: 'test',
+    }),
+
+    // Blood Module
+    BloodModule,
   ],
 })
 export class AppModule {}

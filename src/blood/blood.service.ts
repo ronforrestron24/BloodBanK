@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Blood } from './blood.entity';
+import { BloodType } from './blood.entity';
 import { Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class BloodService {
   constructor(
-    @InjectRepository(Blood) private bloodRepository: Repository<Blood>,
+    @InjectRepository(BloodType) private bloodRepository: Repository<BloodType>,
   ) {}
 
   async create(name: string, quantity: number, bloodtype: string) {
