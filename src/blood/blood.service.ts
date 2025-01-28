@@ -10,18 +10,12 @@ export class BloodService {
     @InjectRepository(Blood) private bloodRepository: Repository<Blood>,
   ) {}
 
-  async create(bloodData: Partial<Blood>): Promise<Blood> {
-    //create object
-    const { name, quantity, bloodType } = bloodData as {
-      name: string;
-      quantity: number;
-      bloodType?: string;
-    };
+  async create(name: string, quantity: number, bloodtype: string) {
     const newBlood = this.bloodRepository.create({
       id: uuid(),
       name,
       quantity,
-      bloodtype: bloodType,
+      bloodtype,
     });
 
     const savedBlood = await this.bloodRepository.save(newBlood);
