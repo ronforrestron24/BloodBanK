@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { BloodResolver } from './blood.resolver';
-import { BloodService } from './blood.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Blood, BloodSchema } from './schema/blood.schema';
+import { BloodService } from './blood.service';
+import { BloodResolver } from './blood.resolver';
+import { BloodType, BloodSchema } from './schema/blood.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Blood.name, schema: BloodSchema }]),
+    MongooseModule.forFeature([{ name: BloodType.name, schema: BloodSchema }]),
   ],
-  providers: [BloodResolver, BloodService],
+  providers: [BloodService, BloodResolver],
 })
 export class BloodModule {}

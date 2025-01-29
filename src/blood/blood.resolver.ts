@@ -1,17 +1,22 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { Blood } from './schema/blood.schema';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { BloodType } from './schema/blood.schema';
 import { BloodService } from './blood.service';
 
-@Resolver(() => Blood)
+@Resolver(() => BloodType)
 export class BloodResolver {
-  constructor(private bloodService: BloodService) {}
+  constructor(private readonly bloodService: BloodService) {}
 
-  @Mutation((returns) => Blood)
-  createBlood(
+  @Mutation(() => BloodType)
+  async createBlood(
     @Args('name') name: string,
     @Args('quantity') quantity: number,
     @Args('bloodType') bloodType: string,
-  ) {
+  ): Promise<BloodType> {
     return this.bloodService.create(name, quantity, bloodType);
+  }
+
+  @Query(() => [BloodType])
+  async bloodTypes(): Promise<BloodType[]> {
+    return this.bloodService.findAll();
   }
 }
