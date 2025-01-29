@@ -1,17 +1,17 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { BloodType } from './blood.entity';
+import { Blood } from './schema/blood.schema';
 import { BloodService } from './blood.service';
 
-@Resolver(() => BloodType)
+@Resolver(() => Blood)
 export class BloodResolver {
   constructor(private bloodService: BloodService) {}
 
-  @Mutation((returns) => BloodType)
+  @Mutation((returns) => Blood)
   createBlood(
     @Args('name') name: string,
     @Args('quantity') quantity: number,
-    @Args('bloodtype') bloodtype: string,
+    @Args('bloodType') bloodType: string,
   ) {
-    return this.bloodService.create(name, quantity, bloodtype);
+    return this.bloodService.create(name, quantity, bloodType);
   }
 }

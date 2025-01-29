@@ -11,12 +11,11 @@ import { BloodModule } from './blood/blood.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: true, // Auto-generates schema
+      autoSchemaFile: true,
     }),
 
-    // TypeORM Module Configuration for MongoDB
     MongooseModule.forRoot('mongodb://localhost:27017', {
-      dbName: 'test',
+      dbName: 'bloodbank',
     }),
 
     // Blood Module

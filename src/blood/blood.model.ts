@@ -3,7 +3,7 @@ import { Column, Entity, ObjectIdColumn, PrimaryColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
-export class BloodType {
+export class Blood {
   @Field((type) => ID)
   @PrimaryColumn()
   id: string;
