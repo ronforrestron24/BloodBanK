@@ -11,7 +11,7 @@ import { join } from 'path';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/bloodbank'),
+    MongooseModule.forRoot('mongodb://localhost:27017/nestjs-graphql-mongodb'),
     BloodModule,
   ],
 })

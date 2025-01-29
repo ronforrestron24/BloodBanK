@@ -1,0 +1,25 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BloodType {
+  _id: ID!
+  name: String!
+  quantity: Float!
+  bloodType: String!
+  createdAt: DateTime!
+  usedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  bloodTypes: [BloodType!]!
+}
+
+type Mutation {
+  createBlood(name: String!, quantity: Float!, bloodType: String!): BloodType!
+}
