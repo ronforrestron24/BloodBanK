@@ -22,4 +22,9 @@ export class BloodService {
   async findAll(): Promise<BloodType[]> {
     return this.bloodModel.find().exec();
   }
+
+  async findById(id: string): Promise<BloodType | null> {
+    const bloodType = await this.bloodModel.findById(id).exec();
+    return bloodType;
+  }
 }

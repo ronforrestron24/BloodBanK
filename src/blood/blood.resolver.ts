@@ -15,8 +15,13 @@ export class BloodResolver {
     return this.bloodService.create(name, quantity, bloodType);
   }
 
+  @Query(() => BloodType)
+  async getById(@Args('id') id: string): Promise<BloodType | null> {
+    return this.bloodService.findById(id);
+  }
+
   @Query(() => [BloodType])
-  async bloodTypes(): Promise<BloodType[]> {
+  async getAll(): Promise<BloodType[]> {
     return this.bloodService.findAll();
   }
 }
