@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BloodType } from './schema/blood.schema';
 import { BloodService } from './blood.service';
+import { UpdateBloodDto } from './dto/update-blood.dto';
 
 @Resolver(() => BloodType)
 export class BloodResolver {
@@ -28,7 +29,7 @@ export class BloodResolver {
   @Mutation(() => BloodType)
   async updateBlood(
     @Args('id') id: string,
-    @Args('updateData') updateData: Partial<BloodType>,
+    @Args('updateData') updateData: UpdateBloodDto,
   ): Promise<BloodType | null> {
     return this.bloodService.update(id, updateData);
   }
@@ -42,4 +43,5 @@ export class BloodResolver {
   async useBlood(@Args('id') id: string): Promise<BloodType | null> {
     return this.bloodService.use(id);
   }
+  
 }

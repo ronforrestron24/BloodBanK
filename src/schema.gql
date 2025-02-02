@@ -23,4 +23,13 @@ type Query {
 
 type Mutation {
   createBlood(name: String!, quantity: Float!, bloodType: String!): BloodType!
+  updateBlood(id: String!, updateData: UpdateBloodDto!): BloodType!
+  deleteBlood(id: String!): BloodType!
+  useBlood(id: String!): BloodType!
+}
+
+input UpdateBloodDto {
+  name: String!
+  reasonOfUse: String!
+  dateUsed: DateTime!
 }
