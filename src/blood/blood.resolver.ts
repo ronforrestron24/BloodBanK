@@ -24,4 +24,22 @@ export class BloodResolver {
   async getAll(): Promise<BloodType[]> {
     return this.bloodService.findAll();
   }
+
+  @Mutation(() => BloodType)
+  async updateBlood(
+    @Args('id') id: string,
+    @Args('updateData') updateData: Partial<BloodType>,
+  ): Promise<BloodType | null> {
+    return this.bloodService.update(id, updateData);
+  }
+
+  @Mutation(() => BloodType)
+  async deleteBlood(@Args('id') id: string): Promise<BloodType | null> {
+    return this.bloodService.delete(id);
+  }
+
+  @Mutation(() => BloodType)
+  async useBlood(@Args('id') id: string): Promise<BloodType | null> {
+    return this.bloodService.use(id);
+  }
 }

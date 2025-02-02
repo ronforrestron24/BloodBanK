@@ -59,4 +59,13 @@ export class BloodService {
       throw error;
     }
   }
+
+  async use(id: string): Promise<BloodType | null> {
+    try {
+      return await this.bloodModel.findByIdAndUpdate(id, { usedAt: new Date() }, { new: true }).exec();
+    } catch (error) {
+      console.error('Error using blood record:', error);
+      throw error;
+    }
+  }
 }
