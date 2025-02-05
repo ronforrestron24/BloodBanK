@@ -4,6 +4,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BloodModule } from './blood/blood.module';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { join } from 'path';
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/nestjs-graphql-mongodb'),
     BloodModule,
+    AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}
