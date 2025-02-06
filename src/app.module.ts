@@ -12,10 +12,6 @@ import { UserModule } from './user/user.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      cors: {
-        origin: 'http://localhost:5173',
-        credentials: true,
-      },
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/nestjs-graphql-mongodb'),
     BloodModule,
